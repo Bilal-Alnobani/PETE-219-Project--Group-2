@@ -66,3 +66,75 @@ plt.figure(figsize=(16, 6))
 heatmap = sns.heatmap(well_df.corr(), vmin=-1, vmax=1, annot=True)
 heatmap.set_title('Log Properties Correlation Heatmap', fontdict={'fontsize':12}, pad=12);
 plt.show()
+
+#histograms 
+## first histogram
+plt.hist(well_df['RHOB'], bins=30, color='red', alpha=0.5, edgecolor='black')
+plt.ylabel("frequency", fontsize=14)
+plt.xlabel("RHOB", fontsize= 14)
+plt.xlim(0,5)
+
+mean_RHOB = well_df['RHOB'].mean()
+p5_RHOB= well_df['RHOB'].quantile(0.05)
+p95_RHOB = well_df['RHOB'].quantile(0.95)
+median_RHOB = well_df['RHOB'].median()
+plt.axvline(mean_RHOB,color='blue', label='mean')
+plt.axvline(p5_RHOB,color='green', label='5th Percentile')
+plt.axvline(p95_RHOB,color='purple', label='95th Percentile')
+plt.axvline(median_RHOB,color='red', label='Median')
+plt.legend()
+plt.show()
+
+## second histogram
+plt.hist(well_df['GR'], bins=50, color='blue', alpha=0.5, edgecolor='black')
+plt.ylabel("frequency", fontsize=14)
+plt.xlabel("GR", fontsize= 14)
+plt.xlim(0,200)
+
+mean_GR = well_df['GR'].mean()
+p5_GR= well_df['GR'].quantile(0.05)
+p95_GR = well_df['GR'].quantile(0.95)
+median_GR = well_df['GR'].median()
+plt.axvline(mean_GR,color='blue', label='mean')
+plt.axvline(p5_GR,color='green', label='5th Percentile')
+plt.axvline(p95_GR,color='purple', label='95th Percentile')
+plt.axvline(median_GR,color='red', label='Median')
+plt.legend()
+plt.show()
+
+##GR log
+well_df['GR_log']= np.log(well_df['GR']+1)
+
+plt.hist(well_df['GR_log'], bins=30, color='red', alpha=0.5, edgecolor='black')
+plt.ylabel("frequency", fontsize=14)
+plt.xlabel("GR_log", fontsize= 14)
+
+mean_GR_log = well_df['GR_log'].mean()
+p5_GR_log= well_df['GR_log'].quantile(0.05)
+p95_GR_log = well_df['GR_log'].quantile(0.95)
+median_GR_log = well_df['GR_log'].median()
+plt.axvline(mean_GR_log,color='blue', label='mean')
+plt.axvline(p5_GR_log,color='green', label='5th Percentile')
+plt.axvline(p95_GR_log,color='purple', label='95th Percentile')
+plt.axvline(median_GR_log,color='red', label='Median')
+plt.legend()
+plt.show()
+
+## RHOB log
+well_df['RHOB_log']= np.log(well_df['RHOB']+1)
+
+plt.hist(well_df['RHOB_log'], bins=30, color='blue', alpha=0.5, edgecolor='black')
+plt.ylabel("frequency", fontsize=14)
+plt.xlabel("RHOB_log", fontsize= 14)
+
+mean_RHOB_log = well_df['RHOB_log'].mean()
+p5_RHOB_log= well_df['RHOB_log'].quantile(0.05)
+p95_RHOB_log = well_df['RHOB_log'].quantile(0.95)
+median_RHOB_log = well_df['RHOB_log'].median()
+plt.axvline(mean_RHOB_log,color='blue', label='mean')
+plt.axvline(p5_RHOB_log,color='green', label='5th Percentile')
+plt.axvline(p95_RHOB_log,color='purple', label='95th Percentile')
+plt.axvline(median_RHOB_log,color='red', label='Median')
+plt.legend()
+plt.show()
+
